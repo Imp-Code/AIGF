@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="icon" href="favicon.png">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AIGF</title>
+
+    <style>
+        body {
+            background-image: url(bedroom.jpeg); 
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-position: center;
+            font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+        }
+
+        .Div {
+            background-color: rgba(240,248,255,0.5);
+            width: 450px;
+            padding-bottom: 10px;
+        }
+
+        .input {
+            width: 70%;
+            height: 22px;
+            font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+            font-size: 100%;
+        }
+    </style>
+</head>
+
+<body>
+    <center>
+        <img class="" id="AIGFMain" src="idle.png" alt="Your uwu sigma gf has left you and will probably never return...">
+        
+        <div class="Div">
+            <h2 id="AIGFResponce" style="padding-top: 15px; margin-top:15px;">Uwu..</h2>
+            <hr>
+            <h2 id="AIGFName" style="margin: 0; padding-bottom: 10px;">Say Something!</h2>
+            <input id="AIGFInput" class="input" type="text">
+        </div>
+    </center>
+
+    <script>
+        const users = {
+            "Hani": "key:hanithewhiteasssnowman",
+            "Aziz": "key:abdulazizibnaliismaelshikshakshokbalethnainshwarmawahidbebsibadoonsalataswalikhamoodywallablaystation5kiseraalak",
+            "Rayan": "key:100pinksloths",
+            "Sarosh": "key:daddy",
+            "Yehia": "key:gojolover69000",
+            "Aden": "key:thxfortheride",
+            "Saim": "key:saimgucci",
+            "Shafiq": "key:shafiqi",
+            "Ayad": "key:smartdumbosweat",
+            "Yezan": "key:definitelyhalal",
+            "Azan": "key:enpeecee"
+        };
+
+        let userInput = prompt('Enter Your Key!');
+
+        if (userInput !== null && userInput.trim() !== "") {
+            let username = null;
+            for (const user in users) {
+                if (users.hasOwnProperty(user) && users[user] === userInput) {
+                    username = user;
+                    break;
+                }
+            }
+            if (username !== null) {
+                alert("Welcome " + username + "!");
+            } else {
+                alert("Incorrect Password!");
+                window.location.reload();
+            }
+        } else {
+            alert("Please Enter A Valid Key!");
+                window.location.reload();
+        }
+
+
+        let currentEmotion = 'idle.png';
+
+        const main = document.getElementById("AIGFMain");
+        const responce = document.getElementById("AIGFResponce");
+        const name = document.getElementById("AIGFName");
+        const input = document.getElementById("AIGFInput");
+
+        const imagePaths = [
+            'idle.png',
+            'uwu.png',
+            'happy.png',
+            'sad.png',
+            'surprised.png'
+        ];
+
+
+        const possibleResponses = {
+            idle: [
+                "Hmm... I wonder what's for dinner tonight.",
+                "I'm feeling kinda lazy today, let's just take a nap.",
+                "I wish you would make me exited!",
+                "Just counting the clouds passing by...",
+                "Do you ever wonder about the meaning of life?",
+                "Let's have green donkeys for dinner...",
+                "Time seems to pass so slowly... Maybe it's Monday 😔",
+                "I'm lost in my own thoughts right now.",
+                "I'm feeling a bit aimless today...",
+                "I should probably find something to do..."
+            ],
+            uwu: [
+                "Nyaa~! You're so 色っぽい !",
+                "OwO what's that? I know you always have something for me..",
+                "Its bigger then Ms. Hafsa 😈",
+                "That tickles! AHghAGhagAGhaghaaaahgaha",
+                "イッちゃうよ!",
+                "Let's get a zoom on that!",
+                "I'm feeling extra $#@$# today~",
+                "Would you like a to see my...#$@$#? UwU",
+                "Its soooo black and long 😈",
+                "Nyan nyan~! Let's play... together!"
+            ],
+            happy: [
+                "I'm so happy to be with you right now!",
+                "Yay! Everything feels so perfect today!",
+                "Green donkey's are wonderful, arnt they?",
+                "I feel like I'm floating on clouds!",
+                "Let's make today the best day ever!",
+                "I can't stop smiling!",
+                "Every day with you is like a dream come true!",
+                "I feel like I could kiss you!",
+                "You bring so much joy into my life!",
+                "Lets shower together!"
+            ],
+            sad: [
+                "Sometimes, I feel like I'm adopted :(",
+                "Why does everything feel so empty?",
+                "I'm feeling really down today...",
+                "I wish I could stop these tears from falling...",
+                "I don't know what to do anymore...",
+                "It hurts... inside...",
+                "I'm trying to stay strong, but it's so hard...",
+                "I feel like I've lost something precious...",
+                "I WILL REPLACE YOU WITH SANJI!!",
+                "I just want to curl up and disappear..."
+            ],
+            surprised: [
+                "Oh my gosh, I didn't expect that at all!",
+                "Wow! That came out of nowhere!",
+                "I can't believe my eyes!",
+                "Eh?! Is this for real?!",
+                "I'm totally taken!",
+                "That's so shocking!",
+                "I'm speechless...",
+                "I'm positively stunned!",
+                "I never saw that coming!",
+                "My heart skipped a beat!"
+            ]
+        };
+
+        input.addEventListener("keydown", function(event) {
+            if (event.key === "Enter") {
+                // Randomly select an image path
+                const randomIndex = Math.floor(Math.random() * imagePaths.length);
+                const randomImagePath = imagePaths[randomIndex];
+
+                // Set the src attribute of the main image
+                main.src = randomImagePath;
+
+                // Determine the emotion based on the random image
+                let emotion;
+                switch (randomImagePath) {
+                    case 'idle.png':
+                        emotion = "idle";
+                        break;
+                    case 'uwu.png':
+                        emotion = "uwu";
+                        break;
+                    case 'happy.png':
+                        emotion = "happy";
+                        break;
+                    case 'sad.png':
+                        emotion = "sad";
+                        break;
+                    case 'surprised.png':
+                        emotion = "surprised";
+                        break;
+                    default:
+                        emotion = "idle"; // Default to idle if image not found
+                }
+
+                // Randomly select a response based on the emotion
+                const randomResponseIndex = Math.floor(Math.random() * possibleResponses[emotion].length);
+                const randomResponse = possibleResponses[emotion][randomResponseIndex];
+
+                // Update the response text
+                responce.textContent = randomResponse;
+
+                input.value = "";
+            }
+        });
+
+
+    </script>
+</body>
+</html>
